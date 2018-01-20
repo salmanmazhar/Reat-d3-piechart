@@ -5,11 +5,19 @@ scales.
 ______________________________________________________________________*/
 
 
-// 1 - Takes a boolean flag and sets user loggedin state to that
-export const login = (data) => {
+// 1 - Takes a boolean flag and user and sets user loggedin state to that
+export const login = (username, status) => {
     return {
         type: 'SET_LOGIN_STATUS',
-        data
+        username: username,
+        status: status
     }
 }
 
+// 2 - Takes user credentials and makes an async call for loggin user
+//   - dispatches login action based on response
+export const performLogin = (username, password) => {
+    return (dispatch) => {
+        dispatch(login(username,true));
+    }
+}

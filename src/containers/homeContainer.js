@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import Home from '../components/home';
-import { login, generateRandomData } from '../actions';
+import {performLogin,
+    login,
+    generateRandomData } from '../actions';
 
 
 const mapStateToProps = state =>{
@@ -11,7 +13,8 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps =  dispatch =>{
     return {
-        login: (data)=> dispatch(login(data))
+        login: (username,status) => dispatch(login(username,status)),
+        performLogin: (username,password)=> dispatch(performLogin(username,password))
     }
 }
 

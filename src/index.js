@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import user from './reducers.js';
 import registerServiceWorker from './registerServiceWorker';
-
+import './index.css'
 
 let store = createStore(user,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),

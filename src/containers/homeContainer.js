@@ -1,3 +1,8 @@
+/**********************************************************************
+Single root container for binding state and actions to root Home 
+component.
+**********************************************************************/
+
 import { connect } from 'react-redux';
 import Home from '../components/home';
 import {performLogin,

@@ -1,5 +1,8 @@
+/**********************************************************************
+Component for showing login form
+**********************************************************************/
 import React from 'react';
-
+import {loading} from '../images/loading.gif';
 export default class LoginForm extends React.Component{
     constructor(){
         super();
@@ -16,7 +19,11 @@ export default class LoginForm extends React.Component{
             <div className="row">
                 <div className="col-md-6 offset-md-6" style={{marginTop:"5em"}}>
                     <div className="card text-white bg-secondary mb-3">
-                        <div className="card-header">Login</div>
+                        <div className="card-header">Login
+                        {user.statusCode===3?
+                            <img src={loading}/>:null
+                        }
+                        </div>
                         <div className="card-body">
                         <div className="form-group">
                             <label htmlFor="ny-email">Email address</label>

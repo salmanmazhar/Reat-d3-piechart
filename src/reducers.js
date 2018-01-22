@@ -1,13 +1,21 @@
-let user = (state = {loggedIn:false,data:[10,20,30]}, action)=>{
+import Parse from 'parse';
+
+let currentUser = Parse.User.current()?{...Parse.User.current(),statusCode:1}:{statusCode:0};
+
+let appStore = (state = {user:currentUser,allUsers:[]}, action)=>{
     switch (action.type){
-        case 'SET_LOGIN_STATUS':
+        case 'SET_USER':
             return {...state,
-                loggedIn:action.status,
-                username:action.username}
+                user:action.user
+            }
             break
+        case 'APPEND_TO_ALL_USERS':
+            return {...state,
+                allUsers:[...state.allUsers,...action.allUsers]
+            }    
         default:
             return state   
     }
 }
 
-export default user;
+export default appStore;

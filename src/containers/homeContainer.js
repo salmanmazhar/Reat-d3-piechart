@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import Home from '../components/home';
 import {performLogin,
-    login,
-    generateRandomData } from '../actions';
+        performLogout,
+        fetchAllUsers
+     } from '../actions';
 
 
 const mapStateToProps = state =>{
@@ -13,8 +14,9 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps =  dispatch =>{
     return {
-        login: (username,status) => dispatch(login(username,status)),
-        performLogin: (username,password)=> dispatch(performLogin(username,password))
+        performLogin: (username,password)=> dispatch(performLogin(username,password)),
+        performLogout: ()=> dispatch(performLogout()),
+        fetchAllUsers:()=> dispatch(fetchAllUsers())
     }
 }
 

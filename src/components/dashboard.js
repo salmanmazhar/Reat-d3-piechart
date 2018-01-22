@@ -6,8 +6,12 @@ export default class Dashboard extends React.Component{
         super();
     }
 
+    componentWillMount(){
+        this.props.fetchAllUsers();
+    }
+    
     render(){
-                
+        console.log("Props",this.props);
         return(<div>
             <div>
                 <PieChart width={450} height={250}

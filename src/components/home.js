@@ -10,30 +10,31 @@ export default class Home extends React.Component{
     }
 
     render(){
-        let { login, loggedIn, username } = this.props;
+        let { user, performLogout } = this.props;
 
         return( 
         <div> 
-
             <nav className="navbar navbar-light bg-light">
                 <img src={icon} />
-                <span className="text-muted">{username&&loggedIn?`Hi ${username}!`:""}</span>
-                <span>
-                {loggedIn?    
-                <button type="button"
-                className="btn btn-secondary btn-sm"
-                onClick={()=>{login("",false)}}>Logout</button>:null
+                {user.statusCode===1?
+                    <span>
+                        <span className="text-muted">{`Hi ${user.username}!`}</span>
+                        <span>  
+                            <button type="button"
+                            className="btn btn-secondary btn-sm"
+                            onClick={()=>{performLogout()}}>Logout</button>
+                        </span>
+                    </span>:null
                 }
-                </span>
-
             </nav>  
+
             <div className="container">    
-            <div className="col-md-12">
-                { loggedIn?
-                    <Dashboard {...this.props} />:
-                    <LoginForm {...this.props} />
-                }
-            </div>
+                <div className="col-md-12">
+                    { user.statusCode===1?
+                        <Dashboard {...this.props} />:
+                        <LoginForm {...this.props} />
+                    }
+                </div>
             </div>  
          </div> )
     }

@@ -10,7 +10,7 @@ export default class LoginForm extends React.Component{
     }
 
     render(){
-        const { performLogin } = this.props;
+        const { user,performLogin } = this.props;
 
         return (
             <div className="row">
@@ -36,6 +36,16 @@ export default class LoginForm extends React.Component{
                              value={this.state.password}
                              onChange={(e)=>{this.setState({password:e.target.value})}}/>
                         </div>
+                        {user.statusCode===2?
+                            <p className="bg-danger text-white font-weight-light" 
+                            style={{fontSize:"9pt",
+                            borderRadius: "0.2em",
+                            padding:"0.2em",
+                            marginBottom:"0.2em"
+                             }}>
+                            Opps! We are unable to login, Please make sure you have the correct user name and password
+                            </p>:null
+                        }
                         <button type="submit"
                             className="btn btn-dark"
                             onClick={()=>{performLogin(this.state.emailAddress,this.state.password)}}>Login</button>

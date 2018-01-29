@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import {appKey,serverURL} from './configs'
 import HomeContainer from './containers/homeContainer';
 import Parse from 'parse'
 
 
 //Initialise parse
-Parse.initialize('newYorkerApi');
-Parse.serverURL = 'https://appdev.newyorker.de/api'
+Parse.initialize(appKey);
+Parse.serverURL = serverURL;
 
 class App extends Component {
   render() {
